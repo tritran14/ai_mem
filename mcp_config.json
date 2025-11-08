@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "weather": {
+      "command": "poetry",
+      "args": ["run", "python", "-m", "src.weather"],
+      "env": {},
+      "cwd": "/Users/tri.tran/Documents/tri/side_prj/ai_mem"
+    }
+  }
+}

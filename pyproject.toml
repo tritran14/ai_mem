@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ai-mem"
+version = "0.1.0"
+description = "Weather MCP Server using National Weather Service API"
+authors = ["prd-tri-tran <tri.tran@paradox.ai>"]
+readme = "README.md"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = {extras = ["standard"], version = "^0.121.0"}
+mcp = {extras = ["cli"], version = "^1.21.0"}
+httpx = "^0.28.0"
+
+[tool.poetry.scripts]
+weather-mcp = "src.weather:main"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
