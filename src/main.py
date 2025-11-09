@@ -9,18 +9,10 @@
 __author__ = "tri.tran"
 __date__ = "$Nov 08, 2025 16:22:03$"
 
-from typing import Union
-
 from fastapi import FastAPI
 
-app = FastAPI()
-
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+app = FastAPI(
+    title="ai-mem API",
+    description="API for managing and searching memories for your AI Agents and Apps.",
+    version="1.0.0",
+)

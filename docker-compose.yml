@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  ai_mem_db:
+    image: ankane/pgvector:latest  # comes with pgvector preinstalled
+    container_name: ai_mem_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ai_mem_user
+      POSTGRES_PASSWORD: ai_mem_pass
+      POSTGRES_DB: ai_mem
+    ports:
+      - "5440:5432"  # Host:Container (avoid default 5432)
+    volumes:
+      - ai_mem_data:/var/lib/postgresql/data
+      - ./init-scripts/db:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ai_mem_user" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ai_mem_net
+
+volumes:
+  ai_mem_data:
+
+networks:
+  ai_mem_net:
+    driver: bridge
