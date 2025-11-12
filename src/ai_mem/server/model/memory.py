@@ -15,7 +15,7 @@ from sqlmodel import SQLModel, Field, Relationship, Column, String
 from sqlalchemy.dialects.postgresql import JSONB
 from pgvector.sqlalchemy import Vector
 
-from src.mcp_mem.server.model.user import User
+from src.ai_mem.server.model.user import User
 
 EMBED_DIM = 1536
 

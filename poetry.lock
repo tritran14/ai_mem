@@ -917,6 +917,21 @@ files = [
 ]
 
 [[package]]
+name = "ollama"
+version = "0.6.0"
+description = "The official Python client for Ollama."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "ollama-0.6.0-py3-none-any.whl", hash = "sha256:534511b3ccea2dff419ae06c3b58d7f217c55be7897c8ce5868dfb6b219cf7a0"},
+    {file = "ollama-0.6.0.tar.gz", hash = "sha256:da2b2d846b5944cfbcee1ca1e6ee0585f6c9d45a2fe9467cbcd096a37383da2f"},
+]
+
+[package.dependencies]
+httpx = ">=0.27"
+pydantic = ">=2.9"
+
+[[package]]
 name = "pgvector"
 version = "0.4.1"
 description = "pgvector support for Python"
@@ -2232,4 +2247,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "42b332977a0a20f32f001c4587dbc1e9374eab991ba395175cea1e2e3279d778"
+content-hash = "4cf5e3ec4a7763a7b8530980efc45d77c583956e969884d0b41a438e2de9f1d3"

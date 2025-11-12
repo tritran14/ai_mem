@@ -4,7 +4,7 @@ from sqlalchemy import engine_from_config, pool
 from alembic import context
 from sqlalchemy.engine import Connection
 
-from src.mcp_mem.server import model  # ensure all models imported
+from src.ai_mem.server import model  # ensure all models imported
 
 config = context.config
 fileConfig(config.config_file_name)

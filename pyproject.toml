@@ -16,6 +16,7 @@ uuid = "^1.30"
 alembic = "^1.17.1"
 psycopg2 = "^2.9.11"
 pgvector = "^0.4.1"
+ollama = "^0.6.0"
 
 [tool.poetry.scripts]
 weather-mcp = "src.weather:main"
