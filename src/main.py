@@ -16,6 +16,7 @@ from fastapi import FastAPI
 
 from ai_mem.server.infrastructure.container import Container
 from ai_mem.server.infrastructure.logging_config import setup_logging
+from ai_mem.server.infrastructure.sentry_config import init_sentry
 from ai_mem.server.interface_adapter.rest.router import router as ai_mem_router
 
 logger = logging.getLogger(__name__)
@@ -29,6 +30,10 @@ async def lifespan(app: FastAPI):
     # Setup logging first
     setup_logging()
     logger.info("Starting ai-mem application...")
+    
+    # Initialize Sentry for error tracking
+    init_sentry()
+    logger.info("Sentry error tracking initialized")
     
     # Startup: Initialize DI container
     container = Container()

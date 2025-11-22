@@ -53,3 +53,54 @@ def create_memory(
     result = memory_use_case.add(request)
     return result
 
+
+@router.get("/test-sentry")
+def test_sentry():
+    """
+    Test endpoint to verify Sentry integration.
+    
+    This endpoint will:
+    1. Capture a test message
+    2. Set user context
+    3. Trigger and capture a test error
+    
+    Check your Sentry dashboard at http://localhost:9000 to see the results.
+    """
+    from ai_mem.server.infrastructure.sentry_config import (
+        capture_exception,
+        capture_message,
+        set_user_context
+    )
+    
+    # Test 1: Capture a message
+    capture_message("Sentry integration test - message capture", level="info")
+    
+    # Test 2: Set user context
+    set_user_context(
+        user_id="test_user_123",
+        email="test@example.com",
+        username="test_user"
+    )
+    
+    # Test 3: Trigger and capture an error
+    try:
+        # Intentional error for testing
+        result = 1 / 0
+    except ZeroDivisionError as e:
+        capture_exception(
+            e,
+            test_type="sentry_integration_test",
+            endpoint="/test-sentry"
+        )
+    
+    return {
+        "status": "success",
+        "message": "Sentry test completed! Check your Sentry dashboard at http://localhost:9000",
+        "tests_performed": [
+            "Message capture",
+            "User context setting",
+            "Exception capture"
+        ]
+    }
+
+
