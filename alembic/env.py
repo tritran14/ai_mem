@@ -1,10 +1,17 @@
+import sys
 from logging.config import fileConfig
+from pathlib import Path
+
 from sqlmodel import SQLModel
 from sqlalchemy import engine_from_config, pool
 from alembic import context
 from sqlalchemy.engine import Connection
 
-from src.ai_mem.server import model  # ensure all models imported
+BASE_DIR = Path(__file__).resolve().parents[1]
+SRC_PATH = BASE_DIR / "src"
+sys.path.append(str(SRC_PATH))
+
+from ai_mem.server.infrastructure.django import model  # ensure all models imported
 
 config = context.config
 fileConfig(config.config_file_name)
