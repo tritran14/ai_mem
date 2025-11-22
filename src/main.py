@@ -31,9 +31,8 @@ async def lifespan(app: FastAPI):
     setup_logging()
     logger.info("Starting ai-mem application...")
     
-    # Initialize Sentry for error tracking
+    # Initialize Sentry for error tracking (if configured)
     init_sentry()
-    logger.info("Sentry error tracking initialized")
     
     # Startup: Initialize DI container
     container = Container()
